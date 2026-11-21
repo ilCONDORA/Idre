@@ -1,0 +1,70 @@
+# Template: copy to the root of a new app, put the icons below in assets/icons/ and replace every "#090d0b"
+# with the background color of the new icon, then run:
+#
+#   dart run flutter_launcher_icons
+#
+# Icons (all 1024 x 1024 PNG):
+#   icon_IosWeb.png         iOS: full square with background, no transparency (iOS rounds the corners)
+#   icon_Web.png            web (favicon + PWA icons): logo only, transparent, filling the whole square
+#   icon_IosDark.png        iOS 18+ dark mode: logo only, transparent background
+#   icon_IosTinted.png      iOS 18+ tinted mode: white logo on black (the system recolors it)
+#   icon_AndForeground.png  Android adaptive icon, front layer: logo only, transparent, inside the safe zone
+#   icon_AndMonochrome.png  Android 13+ themed icon: white logo only, transparent (the system recolors it)
+#   icon_Desk.png           macOS and old Android: rounded square with a transparent margin (Apple grid)
+#   icon_Win.png            Windows: rounded square almost edge to edge (Windows icons have no margin)
+#
+# Linux is not supported by flutter_launcher_icons: its icon is set in the .desktop file / by the packaging.
+flutter_launcher_icons:
+  # ---------------------------------------------------------------- Android
+  # true = replace Flutter's default icon (ic_launcher). A name (e.g. "launcher_icon") would create a SECOND
+  # icon with that name and leave the default Flutter one in the project.
+  android: true
+  # Old Android (before 8.0) shows this image as it is, so it is the rounded square with its own margin.
+  image_path_android: "assets/icons/icon_Desk.png"
+  # Same minimum Android version as new Flutter projects (Flutter 3.50 default: 24).
+  min_sdk_android: 24
+  # Adaptive icon (Android 8.0+): two layers that the launcher crops into its own shape (circle, squircle...)
+  # and can move a little for parallax effects.
+  adaptive_icon_background: "#090d0b" # Back layer: a flat color (the brand dark background).
+  adaptive_icon_foreground: "assets/icons/icon_AndForeground.png" # Front layer: the logo.
+  # Extra padding (in %) added around the front layer. 0 because the padding is already in the image:
+  # the logo sits inside the central "safe zone" that no launcher crops.
+  adaptive_icon_foreground_inset: 0
+  # Themed icon (Android 13+): when the user enables "themed icons", Android uses only the shape of this image
+  # and paints it with the colors of the wallpaper.
+  adaptive_icon_monochrome: "assets/icons/icon_AndMonochrome.png"
+
+  # ---------------------------------------------------------------- iOS
+  ios: true
+  image_path_ios: "assets/icons/icon_IosWeb.png"
+  # The App Store rejects icons with transparency: the alpha channel is removed...
+  remove_alpha_ios: true
+  # ...and any transparent pixel becomes this color.
+  background_color_ios: "#090d0b"
+  # iOS 18+ home screen variants (Settings > Home Screen > Customize).
+  image_path_ios_dark_transparent: "assets/icons/icon_IosDark.png" # Dark: logo on transparent, iOS adds the background.
+  image_path_ios_tinted_grayscale: "assets/icons/icon_IosTinted.png" # Tinted: grayscale, iOS applies the chosen tint.
+  desaturate_tinted_to_grayscale_ios: false # Not needed: the tinted image is already pure white on black.
+
+  # ---------------------------------------------------------------- Web
+  web:
+    generate: true
+    # Used for favicon.png and the PWA icons (Icon-192, Icon-512 and their "maskable" versions).
+    # Transparent, so the favicon has no dark square around it in the browser tab.
+    image_path: "assets/icons/icon_Web.png"
+    # web/manifest.json: color of the splash screen shown while the installed PWA starts...
+    background_color: "#090d0b"
+    # ...and color of the browser / window title bar of the installed PWA.
+    theme_color: "#090d0b"
+
+  # ---------------------------------------------------------------- Windows
+  windows:
+    generate: true
+    image_path: "assets/icons/icon_Win.png"
+    icon_size: 256
+
+  # ---------------------------------------------------------------- macOS
+  macos:
+    generate: true
+    # macOS does not crop icons: the rounded square and its margin must already be in the image.
+    image_path: "assets/icons/icon_Desk.png"

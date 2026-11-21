@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "idre" "\0"
+            VALUE "CompanyName", "ilCONDORA" "\0"
+            VALUE "FileDescription", "Idre" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "idre" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "idre.exe" "\0"
-            VALUE "ProductName", "idre" "\0"
+            VALUE "InternalName", "Idre" "\0"
+            VALUE "LegalCopyright", "Copyright © 2026 Andrea Condorelli. All rights reserved." "\0"
+            VALUE "OriginalFilename", "idre-win.exe" "\0"
+            VALUE "ProductName", "Idre" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

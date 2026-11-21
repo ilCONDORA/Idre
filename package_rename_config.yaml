@@ -1,0 +1,42 @@
+# Template: copy to the root of a new app, replace every <placeholder>, then run 'dart run package_rename'.
+#   <AppName>: display name, e.g. DirRelay
+#   <appname>: lowercase, no spaces, e.g. dirrelay
+#   <year>: copyright year, e.g. 2026
+#
+# Rule used here: "Idre" (capital I) wherever a PERSON reads the name (icon label, window title, PWA name);
+# lowercase "idre" only in technical identifiers (package/bundle id, executable names). The logo itself is the
+# lowercase "idre" wordmark.
+#
+# if config file exists in either pubspec.yaml or root path: 'dart run package_rename'
+# flavour are supported, see package documentation.
+package_rename_config:
+  android:
+    app_name: Idre # (String) The display name of the android app
+    package_name: com.ilcondora.idre # (String) The package name of the android app
+    lang: kotlin # (Optional) (String) The android development language {kotlin(default) or java}
+
+  ios:
+    app_name: Idre # (String) The display name of the ios app
+    bundle_name: Idre # (String) The bundle name of the ios app
+    package_name: com.ilcondora.idre # (String) The product bundle identifier of the ios app
+
+  web:
+    app_name: Idre # (String) The title of the web app (browser tab) and the name of the installed PWA
+    short_app_name: Idre # (String) The PWA name used where space is short (e.g. under the icon)
+    description: A cross-platform Jellyfin front-end made with Flutter. # (String) The description of the web app and PWA
+
+  windows:
+    app_name: Idre # (String) The window title & software name of the windows app
+    organization: ilCONDORA # (String) The organization name (company name) of the windows app
+    copyright_notice: Copyright © 2026 Andrea Condorelli. All rights reserved. # (String) The legal copyright of the windows app
+    exe_name: idre-win # (String) The executable name (binary name) of the windows app
+
+  macos:
+    app_name: Idre # (String) The product name of the macos app
+    package_name: com.ilcondora.idre # (String) The product bundle identifier of the macos app
+    copyright_notice: Copyright © 2026 Andrea Condorelli. All rights reserved. # (String) The product copyright of the macos app
+
+  linux:
+    app_name: Idre # (String) The window title of the linux app
+    package_name: com.ilcondora.idre # (String) The application id of the linux app
+    exe_name: idre-linux # (String) The executable name (binary name) of the linux app
