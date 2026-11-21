@@ -1,11 +1,49 @@
-include: package:flutter_lints/flutter.yaml
+# Lint and formatter settings for Andrea's Flutter and Dart projects.
+#
+# Base: very_good_analysis, a strict rule set by Very Good Ventures.
+# Strict rules also help Claude: the dart-lsp plugin shows these diagnostics
+# to Claude right after each edit, so it fixes its own mistakes.
+#
+# Add the package once per project (pub picks a version that fits your SDK):
+#   dart pub add dev:very_good_analysis
+#
+# Many lint issues can be fixed automatically:
+#   dart fix --apply
+include: package:very_good_analysis/analysis_options.yaml
 
 analyzer:
   exclude:
-    - build/**
-    - android/**
-    - ios/**
-    - web/**
-    - windows/**
-    - macos/**
-    - linux/**
+    # Generated code (go_router_builder, json_serializable, ...) is not
+    # written by hand, so its lint issues are not ours to fix.
+    - "**/*.g.dart"
+    # Build output and platform folders of the Flutter apps (e.g. the example
+    # apps of the packages).
+    - "**/build/**"
+    - "**/android/**"
+    - "**/ios/**"
+    - "**/web/**"
+    - "**/windows/**"
+    - "**/macos/**"
+    - "**/linux/**"
+
+formatter:
+  # 120 instead of the Dart default 80: descriptive names are long, and with
+  # 80 almost every line would wrap.
+  page_width: 120
+  # Keep the trailing commas written by hand: a trailing comma forces one item
+  # per line. Without this, the formatter (Dart 3.7+) adds and removes them on
+  # its own. This overrides "automate" set by very_good_analysis.
+  trailing_commas: preserve
+
+linter:
+  rules:
+    # Off: replaced by page_width 120 above.
+    lines_longer_than_80_chars: false
+    # Off: it removes the type from `final String name = 'Andrea';`.
+    omit_local_variable_types: false
+    # On: asks for a type when it cannot be seen at a glance, for example
+    # `final int userCount = names.length + offset;`.
+    specify_nonobvious_local_variable_types: true
+    # Off: dependencies in pubspec.yaml are grouped by purpose, with a comment
+    # above each group, instead of sorted A to Z.
+    sort_pub_dependencies: false

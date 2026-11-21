@@ -1,5 +1,5 @@
 name: idre
-description: "A new Flutter project."
+description: 'A cross-platform Jellyfin front-end made with Flutter.'
 publish_to: 'none'
 version: 0.1.0+1
 
@@ -9,12 +9,62 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  material_ui: ^1.1.0
+  material_ui: ^1.11.1
+  #---- Base packages for core functionalities
+  flutter_bloc: ^9.1.1 # State management with BLoC pattern
+  hydrated_bloc: ^11.0.0 # Persistent state management with BLoC
+  path_provider: ^2.1.6 # Access to commonly used locations on the filesystem (hydrated_bloc storage)
+  go_router: ^18.1.4
+  #- Internationalization and localization packages
+  intl: ^0.20.3
+  flutter_localizations:
+    sdk: flutter
+  #-
+  dynamic_path_url_strategy: ^1.0.0 # Dynamically set URL strategy based on platform
+  persistent_window_manager: ^3.1.0 # Persistent window management for desktop platforms
+  #----
+  #---- Condora packages: see "Using the packages in another project" in the README of condora_flutter_ecosystem.
+  # Private repository: 'flutter pub get' needs read access to it. Use the newest release tag as ref, the same one
+  # here and in dependency_overrides below.
+  condora_shared:
+    git:
+      url: https://github.com/ilCONDORA/condora_flutter_ecosystem.git
+      path: condora_shared
+      ref: v1.1.0
+  condora_uicomponents:
+    git:
+      url: https://github.com/ilCONDORA/condora_flutter_ecosystem.git
+      path: condora_uicomponents
+      ref: v1.1.0
+  condora_foundation:
+    git:
+      url: https://github.com/ilCONDORA/condora_flutter_ecosystem.git
+      path: condora_foundation
+      ref: v1.1.0
+  #----
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^6.0.0
+  # Lint rules (replaces flutter_lints). For config look for the analysis_options.yaml file in the root directory.
+  very_good_analysis: ^11.0.0
+  # Code generation: 'dart run build_runner build --delete-conflicting-outputs'
+  build_runner: ^2.17.1
+  go_router_builder: ^4.5.3 # Typed routes for go_router
+  # For config look for the flutter_launcher_icons.yaml file in the root directory.
+  flutter_launcher_icons: ^0.14.4 # Generate app icons.
+  # For config look for the package_rename_config.yaml file in the root directory.
+  package_rename: ^1.10.1 # Rename package name, bundle identifier, app name, etc.
+
+# condora_uicomponents brings condora_shared from the same commit, which pub sees as a different source than the
+# condora_shared above: without this override 'flutter pub get' fails with "version solving failed". Same ref.
+dependency_overrides:
+  condora_shared:
+    git:
+      url: https://github.com/ilCONDORA/condora_flutter_ecosystem.git
+      path: condora_shared
+      ref: v1.1.0
 
 flutter:
   uses-material-design: true
+  generate: true # Enables generation of localization files
