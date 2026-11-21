@@ -1,16 +1,19 @@
+import 'package:idre/theme/idre_theme.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const IdreApp());
 }
 
-class MainApp extends StatelessWidget {
+class IdreApp extends StatelessWidget {
   const new({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+    return MaterialApp(
+      theme: IdreThemes.light,
+      darkTheme: IdreThemes.dark,
+      home: const Scaffold(body: Center(child: Text('Hello World!'))),
     );
   }
 }
