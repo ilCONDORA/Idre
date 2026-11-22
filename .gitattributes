@@ -1,0 +1,13 @@
+# Line endings: every text file is stored with LF in the repository, whatever the editor or the OS saves.
+# Without this, files saved with CRLF on Windows show up in diffs as "every line changed".
+* text=auto eol=lf
+
+# Windows scripts keep CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files: never touched, never diffed as text.
+*.png binary
+*.jpg binary
+*.ico binary
+*.jar binary
