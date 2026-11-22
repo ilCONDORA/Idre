@@ -25,6 +25,13 @@ analyzer:
     - "**/windows/**"
     - "**/macos/**"
     - "**/linux/**"
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 
 formatter:
   # 120 instead of the Dart default 80: descriptive names are long, and with
