@@ -57,6 +57,8 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.4 # Generate app icons.
   # For config look for the package_rename_config.yaml file in the root directory.
   package_rename: ^1.10.1 # Rename package name, bundle identifier, app name, etc.
+  # For config look for the flutter_native_splash.yaml file in the root directory.
+  flutter_native_splash: ^2.4.8 # Native splash screen (Android, iOS, web) shown before Flutter starts.
 
 # condora_uicomponents brings condora_shared from the same commit, which pub sees as a different source than the
 # condora_shared above: without this override 'flutter pub get' fails with "version solving failed". Same ref.

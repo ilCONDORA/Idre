@@ -1,0 +1,29 @@
+# Native splash screen: what Android, iOS and the web show BEFORE Flutter starts.
+#
+# It shows the "i" of the wordmark at rest in the center, on the brand background of the system light/dark mode.
+# This is exactly the first frame of the animated Flutter splash (lib/startup/idre_startup_gate.dart), so when Flutter
+# draws its first frame and this splash disappears, nobody sees the switch. Desktop has no native splash.
+#
+# The images are generated, do not edit them by hand:
+#   python3 tool/generate_native_splash_images.py
+#   dart run flutter_native_splash:create
+#
+# Both images are 1152 x 1152 px, read as 4x density = 288 logical pixels on every platform, and are also valid
+# Android 12+ splash icons (the "i" stays inside the 768 px circle Android 12 shows; the script checks it).
+flutter_native_splash:
+  # Light system mode.
+  color: "#f3f7f5" # IdreBrandColors.lightBackground
+  image: assets/splash/splash_icon_light.png
+  # Dark system mode.
+  color_dark: "#090d0b" # IdreBrandColors.darkBackground
+  image_dark: assets/splash/splash_icon_dark.png
+
+  # Android 12+ has its own splash API (always an icon in the center): same images, same colors.
+  android_12:
+    color: "#f3f7f5"
+    image: assets/splash/splash_icon_light.png
+    color_dark: "#090d0b"
+    image_dark: assets/splash/splash_icon_dark.png
+
+  # Web: the image at its natural size (288 CSS px), centered, like on the phones.
+  web_image_mode: center

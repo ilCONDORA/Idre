@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Window background behind the Flutter UI (NormalTheme), light system mode: IdreBrandColors.lightBackground.
+         Visible only for an instant (orientation change, folding/unfolding, Activity restore): it must match the app. -->
+    <color name="idre_window_background">#f3f7f5</color>
+</resources>

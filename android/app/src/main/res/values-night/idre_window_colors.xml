@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Window background behind the Flutter UI (NormalTheme), dark system mode: IdreBrandColors.darkBackground. -->
+    <color name="idre_window_background">#090d0b</color>
+</resources>
