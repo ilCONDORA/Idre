@@ -1,6 +1,6 @@
 name: idre
-description: 'A cross-platform Jellyfin front-end made with Flutter.'
-publish_to: 'none'
+description: "A cross-platform Jellyfin front-end made with Flutter."
+publish_to: "none"
 version: 0.1.0+1
 
 environment:
@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   material_ui: ^1.11.1
   #---- Base packages for core functionalities
+  bloc: ^9.2.1 # Core dart state management package for BLoC pattern
+  meta: ^1.19.0 # Provides annotations for static analysis and code generation
   flutter_bloc: ^9.1.1 # State management with BLoC pattern
   hydrated_bloc: ^11.0.0 # Persistent state management with BLoC
   path_provider: ^2.1.6 # Access to commonly used locations on the filesystem (hydrated_bloc storage)
