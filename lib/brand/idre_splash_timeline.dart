@@ -26,6 +26,19 @@ abstract final class IdreSplashTimeline {
   static const double slideStart = 0.15;
   static const double slideDuration = 0.23;
 
+  /// Progress at which the splash starts when the native splash screen was already on screen.
+  ///
+  /// The native splash (Android, iOS, web) shows the "i" at rest in the center. At this progress the "i"
+  /// has finished popping in and has not started sliding yet, so this frame looks exactly like the native
+  /// image: starting here hides the hand-off from the native splash to Flutter (no second pop-in).
+  static const double handOffFromNativeSplashProgress = slideStart;
+
+  /// How long the "i" stays still in the center after the hand-off, before it slides to the left.
+  ///
+  /// Without it the first frame drawn by Flutter is already moving: the user barely sees the "i" before it leaves,
+  /// and the whole splash feels rushed. With the pause the "i" first "settles", then the choreography starts.
+  static const Duration pauseAfterNativeSplashHandOff = Duration(milliseconds: 400);
+
   /// Tentacle phases. Letter number `index` (0 = d, 1 = r, 2 = e) starts
   /// [delayBetweenLetters] after the previous one.
   static const double firstLetterStart = 0.36;
